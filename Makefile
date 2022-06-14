@@ -6,7 +6,7 @@
 #    By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 00:55:30 by rvrignon          #+#    #+#              #
-#    Updated: 2022/06/14 01:09:36 by rvrignon         ###   ########.fr        #
+#    Updated: 2022/06/14 13:20:44 by rvrignon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJ		=	$(SRC:.c=.o)
 
 CC		=	gcc
 RM		=	rm -f
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g -I/usr/include -Imlx_Linux -O3 -c $< -o $@
 
 NAME	=	ft_fdf/fdf.a
 
@@ -26,18 +26,19 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			$(MAKE) all -C libft
-			cp libft/libft.a minilibx/libmlx.a
-			$(MAKE) all -C minilibx
-			cp minilibx/libmlx.a $(NAME)
-			ar rcs $(NAME) $(OBJ)
-			$(CC) $(CFLAGS) -o $(PROG) $(SRC) $(NAME)
+			cp libft/libft.a mlx_Linux/libmlx.a
+			$(MAKE) all -C mlx_Linux
+			$(CC) $(OBJ) -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_Linux -lXext -lX11 -lm -lz -o $(PROG)
 			@echo "\033[1;32m"
 			@echo "\033[4;36mFDF is now ready to be used!\033[0m"
 			@echo "\033[4;32mGOOD WORK\033[0m"
 
+%.o: %.c
+	$(CC) $(CFLAGS)
+
 clean:		
 			$(MAKE) fclean -C ./libft
-			$(MAKE) clean -C ./minilibx
+			$(MAKE) clean -C ./mlx_Linux
 			$(RM) $(NAME) $(OBJ)
 			@echo "\033[1;32m"
 			@echo "\033[4;36mFDF is now clean!\033[0m"

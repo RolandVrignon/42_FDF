@@ -6,51 +6,23 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/14 01:35:21 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/14 13:21:37 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-// typedef struct	s_data {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }				t_data;
 
-// int	main(void)
-// {
-// 	void	*mlx;
-// 	t_data	img;
+# define WINDOW_WIDTH 600
+# define WINDOW_HEIGHT 300
 
-// 	mlx = mlx_init();
-// 	img.img = mlx_new_image(mlx, 1920, 1080);
-
-// 	/*
-// 	** After creating an image, we can call `mlx_get_data_addr`, we pass
-// 	** `bits_per_pixel`, `line_length`, and `endian` by reference. These will
-// 	** then be set accordingly for the *current* data address.
-// 	*/
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-// 								&img.endian);
-// }
-
-int main(int ac, char **av)
+int main(void)
 {
-    int     fd;
-    char    *str;
+	void	*mlx_ptr;
+	void	*win_ptr;
 
-    if (ac != 2)
-        return (1);
-    fd = open(av[1], O_RDONLY);
-    str = get_next_line(fd);
-    while (str != NULL)
-    {
-        ft_printf("%s", str);
-        free(str);
-        str = get_next_line(fd);
-    }
-    free(str);
-    return (1);
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
+	mlx_destroy_window(mlx_ptr, win_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
 }
