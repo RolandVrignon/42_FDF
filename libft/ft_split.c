@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 19:29:03 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/03 13:38:50 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 00:16:02 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ static char	**fill_tab(char **tab, char const *s, char c, int len)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**tab;
 	int		words;

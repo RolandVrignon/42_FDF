@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/14 20:11:47 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 01:29:11 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct s_axe
-{
-	int	x;
-	int	y;
-}	t_axe;
-
 typedef struct s_data
 {
 	void	*mlx_ptr;
@@ -60,14 +54,40 @@ typedef struct s_rect
 	int		color;
 }	t_rect;
 
+typedef struct s_pixel
+{
+	int			x;
+	int			y;
+	int			z;
+	int			u;
+	int			v;
+	int			color;
+}	t_pixel;
+
+typedef struct s_column
+{
+	t_pixel				*pixel;
+	struct s_column 	*next;
+}	t_column;
+typedef struct s_line
+{
+	t_column			*column;
+	struct s_line		*next;
+}	t_line;
+
+
 void	render_background(t_img *img, int color);
 
 int 	render_rect(t_img *img, t_rect rect);
 
-int		render_axe(t_img *img, t_axe axe);
-
 int		handle_keypress(int keysym, t_data *data);
 
 void	img_pix_put(t_img *img, int x, int y, int color);
+
+t_line	*create_coordonates(char *str);
+
+int 	free_stuff(char **tab, char *str);
+
+void	free_lines(t_line *lines);
 
 #endif
