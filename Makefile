@@ -6,11 +6,14 @@
 #    By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 00:55:30 by rvrignon          #+#    #+#              #
-#    Updated: 2022/06/14 13:20:44 by rvrignon         ###   ########.fr        #
+#    Updated: 2022/06/14 19:11:10 by rvrignon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC =  	ft_fdf/main.c \
+		ft_fdf/render/background.c \
+		ft_fdf/render/rectangle.c \
+		ft_fdf/render/utils.c \
 
 OBJ		=	$(SRC:.c=.o)
 

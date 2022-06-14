@@ -1,0 +1,3 @@
+hex to int pour les couleurs
+matrice de rotation pour placer les points
+relier les point par algo de bresenham
