@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 15:27:13 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:28:56 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_pixel 	*create_pixel(int i, int j, char *str)
 	pixel->z = ft_atoi(str);
 	pixel->u = 10 * ((pixel->x - pixel->z) / sqrt(2));
 	pixel->v = 10 * ((pixel->x + 2 * pixel->y + pixel->z) / sqrt(6));
-	pixel->zoom = 3;
+	pixel->zoom = 1;
 	return (pixel);
 }
 
