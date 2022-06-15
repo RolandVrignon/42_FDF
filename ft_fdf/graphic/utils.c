@@ -6,11 +6,23 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:04:41 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:12:50 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+t_data	set_data(t_line *lines)
+{
+	t_data	data;
+
+	data.mlx_ptr = mlx_init();
+	data.lines = lines;
+	data.width = WINDOW_WIDTH;
+	data.height = WINDOW_HEIGHT;
+	data.background = NAVY_PIXEL;
+	return (data);
+}
 
 int	render(t_data *data)
 {
@@ -27,11 +39,7 @@ int	main_minilibx(t_line *lines)
 {
 	t_data	data;
 
-	data.mlx_ptr = mlx_init();
-	data.lines = lines;
-	data.width = WINDOW_WIDTH;
-	data.height = WINDOW_HEIGHT;
-	data.background = NAVY_PIXEL;
+	data = set_data(lines);
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.width, data.height, "FDF");

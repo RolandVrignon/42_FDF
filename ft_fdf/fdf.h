@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:06:28 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:14:00 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,9 @@ typedef struct s_data
 	t_line	*lines;
 }	t_data;
 
-typedef struct s_rect
-{
-	int		x;
-	int		y;
-	int		width;
-	int		height;
-	int		color;
-}	t_rect;
-
 // GRAPHIC FUNCTIONS
+
+t_data		set_data(t_line *lines);
 
 int			render(t_data *data);
 
@@ -99,11 +92,7 @@ void		render_background(t_data *data);
 
 int			render_map(t_data *data);
 
-int			render_rect(t_img *img, t_rect rect);
-
 void		img_pix_put(t_data *data, int x, int y, int color);
-
-void		draw_line(t_img *canevas, t_coord v1, t_coord v2);
 
 // PARSING FUNCTIONS
 
