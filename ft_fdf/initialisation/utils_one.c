@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:55:53 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 01:44:53 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 01:59:55 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,17 @@ t_line		*assign_coordonates(char **tab, int i, t_line *lines)
 	int         j;
 	t_column    *column;
 
-	column = column_lstnew(create_pixel(i, 0, tab[0]));
+	j = 0;
+	column = column_lstnew(create_pixel(i, j, tab[j]));
 	if (!column)
 		return (NULL);
 	j = 1;
-	while (tab[j] != NULL)
-	{
+	while (tab[++j] != NULL)
 		column_lstadd_back(column, create_pixel(i, j, tab[j]));
-		j++;
-	}
 	if (!lines)
 		lines = line_lstnew(column);
-	line_lstadd_back(lines, column);
+	else
+		line_lstadd_back(lines, column);
 	return (lines);
 }
 

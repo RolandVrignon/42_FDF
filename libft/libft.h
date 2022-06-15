@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:12:32 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 00:16:11 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:03:22 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-long int	ft_atoi(const char *nptr);
+long int	ft_atoi(char *nptr);
 
 void		ft_bzero(void *s, size_t n);
 

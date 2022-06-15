@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 01:49:07 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:05:41 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void print_lines(t_line *lines)
     t_pixel  *pixel;
     
     i = 0;
-    while(lines->next != NULL)
+    while(lines)
     {
         column = lines->column;
         while(column)
         {
             pixel = column->pixel;
-            ft_printf("%d ", pixel->z);
+            ft_printf("{%d, %d} ", pixel->u, pixel->v);
             column = column->next;
             i++;
         }
