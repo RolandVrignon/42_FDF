@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 02:33:19 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 03:19:19 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int			main_minilibx(t_line *lines);
 int			handle_keypress(int keysym, t_data *data);
 
 void		render_background(t_img *img, int color);
+
+int 		render_map(t_img *img, t_line *lines);
 
 int 		render_rect(t_img *img, t_rect rect);
 
