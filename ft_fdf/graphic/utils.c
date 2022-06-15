@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:21:57 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:23:34 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	render(t_data *data)
 	return (0);
 }
 
-int	main_minilibx(t_line *lines)
+int	mlx_main(t_line *lines)
 {
 	t_data	data;
 

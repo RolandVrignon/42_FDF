@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:20:58 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:23:24 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ typedef struct s_data
 
 // GRAPHIC FUNCTIONS
 
+int			mlx_main(t_line *lines);
+
 t_data		set_data(t_line *lines);
 
 int			render(t_data *data);
-
-int			main_minilibx(t_line *lines);
 
 int			handle_keypress(int keysym, t_data *data);
 
