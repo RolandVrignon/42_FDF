@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 14:24:49 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:27:13 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_pixel 	*create_pixel(int i, int j, char *str)
 	pixel->x = i;
 	pixel->y = j;
 	pixel->z = ft_atoi(str);
-	pixel->u = (pixel->x - pixel->z) / sqrt(2);
-	pixel->v = (pixel->x + 2 * pixel->y + pixel->z) / sqrt(6);
-	pixel->zoom = 25;
+	pixel->u = 10 * ((pixel->x - pixel->z) / sqrt(2));
+	pixel->v = 10 * ((pixel->x + 2 * pixel->y + pixel->z) / sqrt(6));
+	pixel->zoom = 3;
 	return (pixel);
 }
 
@@ -37,7 +37,6 @@ t_line		*assign_coordonates(char **tab, int i, t_line *lines)
 	column = column_lstnew(create_pixel(i, j, tab[j]));
 	if (!column)
 		return (NULL);
-	j = 1;
 	while (tab[++j] != NULL)
 		column_lstadd_back(column, create_pixel(i, j, tab[j]));
 	if (!lines)

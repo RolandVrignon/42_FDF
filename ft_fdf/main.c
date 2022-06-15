@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 14:14:28 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:24:52 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 //         while(column)
 //         {
 //             pixel = column->pixel;
-//             ft_printf("%d ", pixel->z);
+//             ft_printf("{%d,%d}  ", pixel->u, pixel->v);
 //             column = column->next;
 //             i++;
 //         }

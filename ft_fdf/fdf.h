@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 14:23:29 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:18:35 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define RED_PIXEL 0xFF0000
 # define GREEN_PIXEL 0xFF00
 # define NAVY_PIXEL 0x222947
+
 typedef struct s_pixel
 {
 	int			x;
@@ -43,6 +44,7 @@ typedef struct s_column
 	t_pixel				*pixel;
 	struct s_column 	*next;
 }	t_column;
+
 typedef struct s_line
 {
 	t_column			*column;
