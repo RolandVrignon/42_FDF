@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:14:00 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:20:58 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_pixel
 	double			z;
 	double			u;
 	double			v;
-	double			zoom;
 	int				color;
 }	t_pixel;
 
@@ -74,6 +73,7 @@ typedef struct s_data
 	int		width;
 	int		height;
 	int		background;
+	int		zoom;
 	t_img	img;
 	t_line	*lines;
 }	t_data;

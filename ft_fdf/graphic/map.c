@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:10:28 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:17:47 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:21:12 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	int	posx(t_data *data, t_pixel *pixel, int height)
 
 	(void)height;
 	x_off = data->height / 2;
-	u = (pixel->u * pixel->zoom) + x_off;
+	u = (pixel->u * data->zoom) + x_off;
 	return (u);
 }
 
@@ -29,8 +29,8 @@ static	int	posy(t_data *data, t_pixel *pixel, int width)
 	int			v;
 
 	(void)width;
-	y_off = data->width / 2 - (((width * pixel->zoom) / 2) * 2);
-	v = (pixel->v * pixel->zoom) + y_off;
+	y_off = data->width / 2 - (((width * data->zoom) / 2) * 2);
+	v = (pixel->v * data->zoom) + y_off;
 	return (v);
 }
 
