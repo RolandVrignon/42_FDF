@@ -6,13 +6,13 @@
 #    By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 00:55:30 by rvrignon          #+#    #+#              #
-#    Updated: 2022/06/15 17:30:26 by rvrignon         ###   ########.fr        #
+#    Updated: 2022/06/16 01:15:20 by rvrignon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC =  	ft_fdf/main.c \
 		ft_fdf/graphic/background.c \
-		ft_fdf/graphic/rectangle.c \
+		ft_fdf/graphic/map.c \
 		ft_fdf/graphic/lines.c \
 		ft_fdf/graphic/utils.c \
 		ft_fdf/parse/utils_one.c \

@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:26:30 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:02:57 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:19:26 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	render_background(t_data *data)
 		j = 0;
 		while (j < WINDOW_WIDTH)
 		{
-			img_pix_put(data, j++, i, data->background);
+			img_pix_put(data, i, j++, data->background);
 		}
 		++i;
 	}

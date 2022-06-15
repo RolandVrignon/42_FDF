@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rectangle.c                                        :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:10:28 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:09:33 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:17:47 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-static	int	p_x(t_data *data, t_pixel *pixel, int height)
+static	int	posx(t_data *data, t_pixel *pixel, int height)
 {
 	int			x_off;
 	int			u;
@@ -23,7 +23,7 @@ static	int	p_x(t_data *data, t_pixel *pixel, int height)
 	return (u);
 }
 
-static	int	p_y(t_data *data, t_pixel *pixel, int width)
+static	int	posy(t_data *data, t_pixel *pixel, int width)
 {
 	int			y_off;
 	int			v;
@@ -51,8 +51,8 @@ int	render_map(t_data *data)
 		while (column)
 		{
 			pixel = column->pixel;
-			img_pix_put(data, p_y(data, pixel, height), p_x(data, pixel, width),
-				pixel->color);
+			img_pix_put(data, posx(data, pixel, width),
+				posy(data, pixel, height), pixel->color);
 			column = column->next;
 		}
 		lines = lines->next;

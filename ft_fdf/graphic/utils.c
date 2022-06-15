@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:12:50 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:19:08 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	img_pix_put(t_data *data, int x, int y, int color)
 	t_img	*img;
 
 	img = &data->img;
-	if (x < 0 || x > data->width || y < 0 || y > data->height)
+	if (x < 0 || x > data->height || y < 0 || y > data->width)
 		return ;
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	pixel = img->addr + (x * img->line_len + y * (img->bpp / 8));
 	*(int *)pixel = color;
 }
