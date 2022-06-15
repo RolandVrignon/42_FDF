@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 01:29:11 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:10:25 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,40 @@ typedef struct s_line
 	struct s_line		*next;
 }	t_line;
 
+// GRAPHIC FUNCTIONS
 
-void	render_background(t_img *img, int color);
+int			render(t_data *data);
 
-int 	render_rect(t_img *img, t_rect rect);
+int			main_minilibx(char * str);
 
-int		handle_keypress(int keysym, t_data *data);
+int			handle_keypress(int keysym, t_data *data);
 
-void	img_pix_put(t_img *img, int x, int y, int color);
+void		render_background(t_img *img, int color);
 
-t_line	*create_coordonates(char *str);
+int 		render_rect(t_img *img, t_rect rect);
 
-int 	free_stuff(char **tab, char *str);
+void		img_pix_put(t_img *img, int x, int y, int color);
 
-void	free_lines(t_line *lines);
+// PARSING FUNCTIONS
+
+void		line_lstadd_back(t_line *lines, t_column *column);
+
+void		column_lstadd_back(t_column *column, t_pixel *pixel);
+
+t_column	*column_lstnew(t_pixel *pixel);
+
+t_line		*line_lstnew(t_column *column);
+
+t_pixel 	*create_pixel(int i, int j, char *str);
+
+t_line		*assign_coordonates(char **tab, int i, t_line *lines);
+
+t_line		*create_coordonates(char *str);
+
+// FREE FUNCTIONS
+
+int 		free_stuff(char **tab, char *str);
+
+void		free_lines(t_line *lines);
 
 #endif
