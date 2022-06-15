@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 15:46:16 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:49:27 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,21 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 2560
+# define WINDOW_HEIGHT 1440
 
 # define MLX_ERROR 1
 
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0xFF00
-# define NAVY_PIXEL 0x222947
+# define RED_PIXEL 0xff79c6
+# define GREEN_PIXEL 0x50fa7b
+# define NAVY_PIXEL 0x282a36
+# define WHITE_PIXEL 0xFFFFFF
+
+typedef struct s_coord
+{
+	int x;
+	int y;
+}	t_coord;
 
 typedef struct s_pixel
 {
@@ -92,6 +99,8 @@ int 		render_map(t_img *img, t_line *lines);
 int 		render_rect(t_img *img, t_rect rect);
 
 void		img_pix_put(t_img *img, int x, int y, int color);
+
+void		draw_line(t_img *canevas, t_coord v1, t_coord v2);
 
 // PARSING FUNCTIONS
 

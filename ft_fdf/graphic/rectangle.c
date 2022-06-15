@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:10:28 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 15:47:34 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:39:59 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,28 @@ static	int p_y(t_pixel *pixel, int width)
 	return (v);
 }
 
+// void	draw_line(t_img *canevas, t_coord origin, t_coord dest)
+// {
+// 	int	dx;
+// 	int	dy;
+// 	int	e;
+
+// 	dx = (dest.x - origin.x);
+// 	dy = (dest.y - origin.y);
+// 	e = dest.x - origin.x;
+// 	while (origin.x < dest.x)
+// 	{
+// 		img_pix_put(canevas, origin.y, origin.x, WHITE_PIXEL);
+// 		e -= dy;
+// 		if (e <= 0)
+// 		{
+// 			origin.y++;
+// 			e += dx;
+// 		}
+// 		origin.x++;
+// 	}
+// }
+
 int render_map(t_img *img, t_line *lines)
 {
 	t_column	*column;
@@ -54,6 +76,8 @@ int render_map(t_img *img, t_line *lines)
 			else
 				img_pix_put(img, p_y(pixel, height), p_x(pixel, width), RED_PIXEL);
             column = column->next;
+			if (!column)
+				break;
         }
         lines = lines->next;
     }
