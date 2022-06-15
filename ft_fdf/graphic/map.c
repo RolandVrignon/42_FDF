@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:10:28 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:21:12 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:56:45 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	render_map(t_data *data)
 			img_pix_put(data, posx(data, pixel, width),
 				posy(data, pixel, height), pixel->color);
 			column = column->next;
+			// if (column)
+			// 	draw_lines(data, (t_coord){posx(data, pixel, width), posy(data, pixel, height)},
+			// 		(t_coord){posx(data, column->pixel, width), posy(data, column->pixel, height)});
 		}
 		lines = lines->next;
 	}

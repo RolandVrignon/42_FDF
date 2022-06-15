@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:23:24 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:52:52 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 500
 
 # define MLX_ERROR 1
 
@@ -93,6 +93,8 @@ void		render_background(t_data *data);
 int			render_map(t_data *data);
 
 void		img_pix_put(t_data *data, int x, int y, int color);
+
+void		draw_lines(t_data *data, t_coord origin, t_coord dest);
 
 // PARSING FUNCTIONS
 
