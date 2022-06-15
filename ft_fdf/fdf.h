@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 15:18:35 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:46:16 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 
 typedef struct s_pixel
 {
-	int			x;
-	int			y;
-	int			z;
-	int			u;
-	int			v;
-	int			zoom;
+	double			x;
+	double			y;
+	double			z;
+	double			u;
+	double			v;
+	double			zoom;
 	int			color;
 }	t_pixel;
 
@@ -103,9 +103,9 @@ t_column	*column_lstnew(t_pixel *pixel);
 
 t_line		*line_lstnew(t_column *column);
 
-t_pixel 	*create_pixel(int i, int j, char *str);
+t_pixel 	*create_pixel(double i, double j, char *str);
 
-t_line		*assign_coordonates(char **tab, int i, t_line *lines);
+t_line		*assign_coordonates(char **tab, double i, t_line *lines);
 
 t_line		*create_coordonates(char *str);
 
