@@ -6,18 +6,18 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:55:53 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 02:10:42 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:07:56 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void		line_lstadd_back(t_line *lines, t_column *column)
+void	line_lstadd_back(t_line *lines, t_column *column)
 {
-	t_line *tmp;
-	
-	while(lines->next != NULL)
-		lines=lines->next;
+	t_line	*tmp;
+
+	while (lines->next != NULL)
+		lines = lines->next;
 	tmp = (t_line *)malloc(sizeof(t_line));
 	if (!tmp)
 		return ;
@@ -26,12 +26,12 @@ void		line_lstadd_back(t_line *lines, t_column *column)
 	lines->next = tmp;
 }
 
-void		column_lstadd_back(t_column *column, t_pixel *pixel)
+void	column_lstadd_back(t_column *column, t_pixel *pixel)
 {
-	t_column *tmp;
-	
-	while(column->next != NULL)
-		column=column->next;
+	t_column	*tmp;
+
+	while (column->next != NULL)
+		column = column->next;
 	tmp = (t_column *)malloc(sizeof(t_column));
 	if (!tmp || !pixel)
 		return ;
@@ -52,7 +52,7 @@ t_column	*column_lstnew(t_pixel *pixel)
 	return (new);
 }
 
-t_line		*line_lstnew(t_column *column)
+t_line	*line_lstnew(t_column *column)
 {
 	t_line	*new;
 

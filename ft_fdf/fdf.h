@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 00:54:36 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:06:28 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 typedef struct s_coord
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_coord;
 
 typedef struct s_pixel
@@ -49,7 +49,7 @@ typedef struct s_pixel
 typedef struct s_column
 {
 	t_pixel				*pixel;
-	struct s_column 	*next;
+	struct s_column		*next;
 }	t_column;
 
 typedef struct s_line
@@ -61,7 +61,7 @@ typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
-	int		bpp; /* bits per pixel */
+	int		bpp;
 	int		line_len;
 	int		endian;
 }	t_img;
@@ -97,9 +97,9 @@ int			handle_keypress(int keysym, t_data *data);
 
 void		render_background(t_data *data);
 
-int 		render_map(t_data *data);
+int			render_map(t_data *data);
 
-int 		render_rect(t_img *img, t_rect rect);
+int			render_rect(t_img *img, t_rect rect);
 
 void		img_pix_put(t_data *data, int x, int y, int color);
 
@@ -115,7 +115,7 @@ t_column	*column_lstnew(t_pixel *pixel);
 
 t_line		*line_lstnew(t_column *column);
 
-t_pixel 	*create_pixel(double i, double j, char *str);
+t_pixel		*create_pixel(double i, double j, char *str);
 
 t_line		*assign_coordonates(char **tab, double i, t_line *lines);
 
@@ -127,7 +127,7 @@ int			line_lstsize(t_line *lst);
 
 // FREE FUNCTIONS
 
-int 		free_stuff(char **tab, char *str);
+int			free_stuff(char **tab, char *str);
 
 void		free_lines(t_line *lines);
 

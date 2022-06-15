@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 15:24:52 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:06:37 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 //     int i;
 //     t_column *column;
 //     t_pixel  *pixel;
-    
 //     i = 0;
 //     while(lines)
 //     {
@@ -36,17 +35,16 @@
 
 int	main(int ac, char **av)
 {
-	t_line *lines;
+	t_line	*lines;
 
-    (void)av;
+	(void)av;
 	if (ac < 2 || ac > 2)
 	{
 		ft_printf("Error, not enough or too much arguments\n");
 		return (0);
 	}
-    lines = create_coordonates(av[1]);
-    // print_lines(lines);
-    main_minilibx(lines);
-    free_lines(lines);
+	lines = create_coordonates(av[1]);
+	main_minilibx(lines);
+	free_lines(lines);
 	return (0);
 }

@@ -6,15 +6,15 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:01:41 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:05:40 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-t_pixel 	*create_pixel(double i, double j, char *str)
+t_pixel	*create_pixel(double i, double j, char *str)
 {
-	t_pixel *pixel;
+	t_pixel	*pixel;
 
 	pixel = (t_pixel *)malloc(sizeof(t_pixel));
 	if (!pixel)
@@ -29,11 +29,11 @@ t_pixel 	*create_pixel(double i, double j, char *str)
 	return (pixel);
 }
 
-t_line		*assign_coordonates(char **tab, double i, t_line *lines)
+t_line	*assign_coordonates(char **tab, double i, t_line *lines)
 {
-	int         j;
+	int			j;
 	double		k;
-	t_column    *column;
+	t_column	*column;
 
 	j = 0;
 	k = 0;
@@ -49,13 +49,13 @@ t_line		*assign_coordonates(char **tab, double i, t_line *lines)
 	return (lines);
 }
 
-t_line		*create_coordonates(char *str)
+t_line	*create_coordonates(char *str)
 {
-	int     fd;
-	char    *line;
-	char    **tab;
-	t_line  *lines;
-	double  i;
+	int		fd;
+	char	*line;
+	char	**tab;
+	t_line	*lines;
+	double	i;
 
 	lines = NULL;
 	fd = open(str, O_RDONLY);
@@ -69,7 +69,7 @@ t_line		*create_coordonates(char *str)
 	{
 		tab = ft_split(line, ' ');
 		if (!tab)
-			return(NULL);
+			return (NULL);
 		lines = assign_coordonates(tab, i, lines);
 		free_stuff(tab, line);
 		line = get_next_line(fd);
@@ -97,7 +97,7 @@ int	line_lstsize(t_line *lst)
 
 int	col_lstsize(t_column *lst)
 {
-	int		i;
+	int			i;
 	t_column	*tmp;
 
 	i = 0;

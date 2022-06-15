@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 00:54:48 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 01:04:41 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	render(t_data *data)
 		return (1);
 	render_background(data);
 	render_map(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
-
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img,
+		0, 0);
 	return (0);
 }
 
-int main_minilibx(t_line *lines)
+int	main_minilibx(t_line *lines)
 {
 	t_data	data;
 
@@ -34,7 +34,7 @@ int main_minilibx(t_line *lines)
 	data.background = NAVY_PIXEL;
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.width, data.height, "Welcome FDF");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.width, data.height, "FDF");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
@@ -64,12 +64,12 @@ int	handle_keypress(int keysym, t_data *data)
 
 void	img_pix_put(t_data *data, int x, int y, int color)
 {
-	char    *pixel;
+	char	*pixel;
 	t_img	*img;
 
 	img = &data->img;
 	if (x < 0 || x > data->width || y < 0 || y > data->height)
 		return ;
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(int *)pixel = color;
 }
