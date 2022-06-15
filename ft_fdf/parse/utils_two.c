@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 02:11:28 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:31:09 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,3 +75,36 @@ t_line		*create_coordonates(char *str)
 	return (lines);
 }
 
+int	line_lstsize(t_line *lst)
+{
+	int		i;
+	t_line	*tmp;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	tmp = lst;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+int	col_lstsize(t_column *lst)
+{
+	int		i;
+	t_column	*tmp;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	tmp = lst;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}

@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 02:07:24 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:31:51 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@ int	render(t_data *data)
 	if (data->win_ptr == NULL)
 		return (1);
 	render_background(&data->img, NAVY_PIXEL);
-	render_rect(&data->img, (t_rect){(WINDOW_WIDTH / 2) - 50 , (WINDOW_HEIGHT / 2) - 50, 100, 100, GREEN_PIXEL});
+	render_rect(&data->img, (t_rect){(WINDOW_WIDTH / 2) - (col_lstsize(data->lines->column)
+	/ 2) , (WINDOW_HEIGHT / 2) - (line_lstsize(data->lines) / 2), 
+	col_lstsize(data->lines->column), line_lstsize(data->lines), GREEN_PIXEL});
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 
 	return (0);
 }
 
-int main_minilibx(char * str)
+int main_minilibx(t_line *lines)
 {
 	t_data	data;
 
-	(void)str;
 	data.mlx_ptr = mlx_init();
+	data.lines = lines;
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");

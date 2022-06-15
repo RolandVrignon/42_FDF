@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 02:10:25 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:33:19 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,6 @@
 # define RED_PIXEL 0xFF0000
 # define GREEN_PIXEL 0xFF00
 # define NAVY_PIXEL 0x222947
-
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
-	int		endian;
-}	t_img;
-
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	img;
-	int		cur_img;
-}	t_data;
-
-typedef struct s_rect
-{
-	int		x;
-	int		y;
-	int		width;
-	int		height;
-	int		color;
-}	t_rect;
-
 typedef struct s_pixel
 {
 	int			x;
@@ -74,12 +47,38 @@ typedef struct s_line
 	t_column			*column;
 	struct s_line		*next;
 }	t_line;
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img;
+	int		cur_img;
+	t_line	*lines;
+}	t_data;
+
+typedef struct s_rect
+{
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+	int		color;
+}	t_rect;
 
 // GRAPHIC FUNCTIONS
 
 int			render(t_data *data);
 
-int			main_minilibx(char * str);
+int			main_minilibx(t_line *lines);
 
 int			handle_keypress(int keysym, t_data *data);
 
@@ -104,6 +103,10 @@ t_pixel 	*create_pixel(int i, int j, char *str);
 t_line		*assign_coordonates(char **tab, int i, t_line *lines);
 
 t_line		*create_coordonates(char *str);
+
+int			col_lstsize(t_column *lst);
+
+int			line_lstsize(t_line *lst);
 
 // FREE FUNCTIONS
 

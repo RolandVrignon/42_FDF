@@ -6,16 +6,16 @@
 #    By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 00:55:30 by rvrignon          #+#    #+#              #
-#    Updated: 2022/06/15 02:11:52 by rvrignon         ###   ########.fr        #
+#    Updated: 2022/06/15 02:20:35 by rvrignon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC =  	ft_fdf/main.c \
-		ft_fdf/render/background.c \
-		ft_fdf/render/rectangle.c \
-		ft_fdf/render/utils.c \
-		ft_fdf/initialisation/utils_one.c \
-		ft_fdf/initialisation/utils_two.c \
+		ft_fdf/graphic/background.c \
+		ft_fdf/graphic/rectangle.c \
+		ft_fdf/graphic/utils.c \
+		ft_fdf/parse/utils_one.c \
+		ft_fdf/parse/utils_two.c \
 		ft_fdf/free/free_stuff.c \
 
 OBJ		=	$(SRC:.c=.o)

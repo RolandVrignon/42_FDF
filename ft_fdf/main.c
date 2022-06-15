@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 02:07:16 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/15 02:33:42 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void print_lines(t_line *lines)
         while(column)
         {
             pixel = column->pixel;
-            ft_printf("{%d, %d} ", pixel->u, pixel->v);
+            ft_printf("%d ", pixel->z);
             column = column->next;
             i++;
         }
@@ -46,6 +46,7 @@ int	main(int ac, char **av)
 	}
     lines = create_coordonates(av[1]);
     print_lines(lines);
+    main_minilibx(lines);
     free_lines(lines);
 	return (0);
 }
