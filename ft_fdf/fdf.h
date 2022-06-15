@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/15 18:19:13 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 00:54:36 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_pixel
 	double			u;
 	double			v;
 	double			zoom;
-	int			color;
+	int				color;
 }	t_pixel;
 
 typedef struct s_column
@@ -70,8 +70,11 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	img;
 	int		cur_img;
+	int		width;
+	int		height;
+	int		background;
+	t_img	img;
 	t_line	*lines;
 }	t_data;
 
@@ -92,13 +95,13 @@ int			main_minilibx(t_line *lines);
 
 int			handle_keypress(int keysym, t_data *data);
 
-void		render_background(t_img *img, int color);
+void		render_background(t_data *data);
 
-int 		render_map(t_img *img, t_line *lines);
+int 		render_map(t_data *data);
 
 int 		render_rect(t_img *img, t_rect rect);
 
-void		img_pix_put(t_img *img, int x, int y, int color);
+void		img_pix_put(t_data *data, int x, int y, int color);
 
 void		draw_line(t_img *canevas, t_coord v1, t_coord v2);
 

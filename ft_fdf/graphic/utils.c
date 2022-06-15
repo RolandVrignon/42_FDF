@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 00:24:54 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 00:54:48 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (1);
-	render_background(&data->img, NAVY_PIXEL);
-	render_map(&data->img, data->lines);
+	render_background(data);
+	render_map(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 
 	return (0);
@@ -29,15 +29,18 @@ int main_minilibx(t_line *lines)
 
 	data.mlx_ptr = mlx_init();
 	data.lines = lines;
+	data.width = WINDOW_WIDTH;
+	data.height = WINDOW_HEIGHT;
+	data.background = NAVY_PIXEL;
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.width, data.height, "Welcome FDF");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
 		return (MLX_ERROR);
 	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, data.width, data.height);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
@@ -59,11 +62,13 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-void	img_pix_put(t_img *img, int x, int y, int color)
+void	img_pix_put(t_data *data, int x, int y, int color)
 {
 	char    *pixel;
+	t_img	*img;
 
-	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
+	img = &data->img;
+	if (x < 0 || x > data->width || y < 0 || y > data->height)
 		return ;
     pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(int *)pixel = color;
