@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:23:34 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 20:14:36 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ t_data	set_data(t_line *lines)
 
 	data.mlx_ptr = mlx_init();
 	data.lines = lines;
-	data.width = WINDOW_WIDTH;
-	data.height = WINDOW_HEIGHT;
+	data.win_width = WINDOW_WIDTH;
+	data.win_height = WINDOW_HEIGHT;
 	data.background = NAVY_PIXEL;
 	data.zoom = 30;
+	data.map_height = line_lstsize(lines);
+	data.map_width = col_lstsize(lines->column);
 	return (data);
 }
 
@@ -43,13 +45,13 @@ int	mlx_main(t_line *lines)
 	data = set_data(lines);
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.width, data.height, "FDF");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.win_width, data.win_height, "FDF");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
 		return (MLX_ERROR);
 	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, data.width, data.height);
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, data.win_width, data.win_height);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
@@ -77,7 +79,7 @@ void	img_pix_put(t_data *data, int x, int y, int color)
 	t_img	*img;
 
 	img = &data->img;
-	if (x < 0 || x > data->height || y < 0 || y > data->width)
+	if (x < 0 || x > data->win_height || y < 0 || y > data->win_width)
 		return ;
 	pixel = img->addr + (x * img->line_len + y * (img->bpp / 8));
 	*(int *)pixel = color;

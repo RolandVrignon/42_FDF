@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:52:52 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/16 20:12:19 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define WINDOW_WIDTH 1000
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 
 # define MLX_ERROR 1
 
@@ -29,6 +29,19 @@
 # define NAVY_PIXEL 0x282a36
 # define WHITE_PIXEL 0xFFFFFF
 
+typedef struct s_bresenham
+{
+	int x;
+	int y;
+	int p;
+	int x1;
+	int y1;
+	int x2;
+	int y2;
+	int d;
+	int dx;
+	int dy;
+}	t_bresenham;
 typedef struct s_coord
 {
 	int	x;
@@ -70,8 +83,10 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		cur_img;
-	int		width;
-	int		height;
+	int		win_width;
+	int		win_height;
+	int		map_width;
+	int		map_height;
 	int		background;
 	int		zoom;
 	t_img	img;
@@ -94,7 +109,9 @@ int			render_map(t_data *data);
 
 void		img_pix_put(t_data *data, int x, int y, int color);
 
-void		draw_lines(t_data *data, t_coord origin, t_coord dest);
+void		draw_lines(t_data *data, t_pixel *pixel);
+
+t_coord		pos(t_data *data, t_pixel *pixel);
 
 // PARSING FUNCTIONS
 
