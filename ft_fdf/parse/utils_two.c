@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 14:04:34 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:56:50 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 t_pixel	*create_pixel(double i, double j, char *str)
 {
 	t_pixel	*pixel;
+	double tmp;
+	double deg;
 
 	pixel = (t_pixel *)malloc(sizeof(t_pixel));
 	if (!pixel)
@@ -22,9 +24,13 @@ t_pixel	*create_pixel(double i, double j, char *str)
 	pixel->x = i;
 	pixel->y = j;
 	pixel->z = ft_atoi(str);
-	pixel->u = (pixel->x - pixel->z) / sqrt(2);
-	pixel->v = (pixel->x + 2 * pixel->y + pixel->z) / sqrt(6);
+	pixel->u = (pixel->x - 1.4 * pixel->z ) / sqrt(2);
+	pixel->v = (pixel->x + 2 * pixel->y + 1.4 * pixel->z) / sqrt(6);
 	pixel->color = WHITE_PIXEL;
+	tmp = pixel->u;
+	deg = - 50 * M_PI_4 / 35;
+	pixel->u = pixel->u + (pixel->u * cos(deg) + pixel->v * sin(deg));
+	pixel->v = pixel->v + (-tmp * sin(deg) + pixel->v * cos(deg));
 	return (pixel);
 }
 

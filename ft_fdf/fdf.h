@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 15:11:41 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:26:45 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define WINDOW_WIDTH 2560
-# define WINDOW_HEIGHT 1440
+# define WINDOW_WIDTH 2560 / 2
+# define WINDOW_HEIGHT 1440 / 2
 
 # define MLX_ERROR 1
 
 # define RED_PIXEL 0xff79c6
 # define GREEN_PIXEL 0x50fa7b
-# define NAVY_PIXEL 0x282a36
+# define NAVY_PIXEL 0x000000
 # define WHITE_PIXEL 0xFFFFFF
 
 typedef struct s_bresenham
@@ -138,5 +138,9 @@ int			line_lstsize(t_line *lst);
 int			free_stuff(char **tab, char *str);
 
 void		free_lines(t_line *lines);
+
+// Hooks
+
+int			mouse_hook(int keysym, t_data *data);
 
 #endif

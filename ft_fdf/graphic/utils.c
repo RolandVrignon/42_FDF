@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 15:20:53 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/19 19:26:22 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,17 @@ t_data	set_data(t_line *lines)
 	data.win_width = WINDOW_WIDTH;
 	data.win_height = WINDOW_HEIGHT;
 	data.background = NAVY_PIXEL;
-	data.zoom = 30;
+	data.zoom = 8;
 	data.map_height = line_lstsize(lines);
 	data.map_width = col_lstsize(lines->column);
 	return (data);
+}
+
+int	handle_no_event(void *data)
+{
+	/* This function needs to exist, but it is useless for the moment */
+	(void)data;
+	return (0);
 }
 
 int	render(t_data *data)
@@ -54,9 +61,12 @@ int	mlx_main(t_line *lines)
 	data.img.mlx_img = mlx_new_image(data.mlx_ptr, data.win_width, data.win_height);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
+			
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+	mlx_mouse_hook(data.win_ptr, &mouse_hook, &data);
 	mlx_loop(data.mlx_ptr);
+	
 	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);

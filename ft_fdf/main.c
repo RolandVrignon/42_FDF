@@ -6,11 +6,12 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:25:48 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:19:51 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "stdio.h"
 
 // static void print_lines(t_line *lines)
 // {
@@ -24,7 +25,7 @@
 //         while(column)
 //         {
 //             pixel = column->pixel;
-//             ft_printf("{%d,%d}  ", pixel->u, pixel->v);
+//             printf("{%.2f,%.2f}  ", pixel->u, pixel->v);
 //             column = column->next;
 //             i++;
 //         }
@@ -44,6 +45,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	lines = create_coordonates(av[1]);
+	// print_lines(lines);
 	mlx_main(lines);
 	free_lines(lines);
 	return (0);

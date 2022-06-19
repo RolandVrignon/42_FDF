@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:26:39 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 15:13:56 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/19 18:26:41 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void test(t_data *data, t_bresenham line)
 {
-	int	e;
+	int e;
 	int x;
 	int y;
 
@@ -38,7 +38,7 @@ void test(t_data *data, t_bresenham line)
 
 void test_2(t_data *data, t_bresenham line)
 {
-	int	e;
+	int e;
 	int x;
 	int y;
 
@@ -74,7 +74,7 @@ void test_3(t_data *data, t_bresenham line)
 
 void test_4(t_data *data, t_bresenham line)
 {
-	int	e;
+	int e;
 	int x;
 	int y;
 
@@ -98,7 +98,7 @@ void test_4(t_data *data, t_bresenham line)
 
 void test_5(t_data *data, t_bresenham line)
 {
-	int	e;
+	int e;
 	int x;
 	int y;
 
@@ -122,7 +122,7 @@ void test_5(t_data *data, t_bresenham line)
 
 void test_6(t_data *data, t_bresenham line)
 {
-	int	e;
+	int e;
 	int x;
 	int y;
 
@@ -146,74 +146,99 @@ void test_6(t_data *data, t_bresenham line)
 
 void bresenham(t_data *data, t_bresenham line)
 {
-	(void)line;
-	(void)data;
+	int x0 = line.x1;
+	int y0 = line.y1;
+	int x1 = line.x2;
+	int y1 = line.y2;
+	int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+	int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+	int err = dx + dy, e2; /* error value e_xy */
 
-	if (line.dx != 0)
-	{
-		if (line.dx > 0)
+	for (;;)
+	{ /* loop */
+		img_pix_put(data, x0, y0, WHITE_PIXEL);
+		if (x0 == x1 && y0 == y1)
+			break;
+		e2 = 2 * err;
+		if (e2 >= dy)
 		{
-			if (line.dy != 0)
-			{
-				if (line.dy > 0)
-				{
-					if (line.dx > line.dy)
-						test(data, line);
-					else
-						test_6(data, line);
-				}
-				else
-				{
-					if (line.dx > -line.dy)
-						test_2(data, line);
-					else
-						ft_printf("4\n");
-				}
-			}
-			else
-			{
-				while (line.x < line.x2)
-				{
-					img_pix_put(data, line.x, line.y, WHITE_PIXEL);
-					line.x++;
-				}
-			}
-		}
-		else
+			err += dy;
+			x0 += sx;
+		} /* e_xy+e_x > 0 */
+		if (e2 <= dx)
 		{
-			if (line.dy != 0)
-			{
-				if (line.dy > 0)
-				{
-					if (-line.dx > line.dy)
-						test_4(data, line);
-					else
-						test_5(data, line);
-				}
-				else
-				{
-					if (line.dx <= line.dy)
-						ft_printf("8\n");
-					else
-						ft_printf("9\n");
-				}
-			}
-			else
-			{
-				ft_printf("10\n");
-			}
-		}
+			err += dx;
+			y0 += sy;
+		} /* e_xy+e_y < 0 */
 	}
-	else
-	{
-		if (line.dy != 0)
-		{
-			if (line.dy > 0)
-				test_3(data, line);
-			else
-				ft_printf("12\n");
-		}
-	}
+	// (void)line;
+	// (void)data;
+
+	// if (line.dx != 0)
+	// {
+	// 	if (line.dx > 0)
+	// 	{
+	// 		if (line.dy != 0)
+	// 		{
+	// 			if (line.dy > 0)
+	// 			{
+	// 				if (line.dx > line.dy)
+	// 					test(data, line);
+	// 				else
+	// 					test_6(data, line);
+	// 			}
+	// 			else
+	// 			{
+	// 				if (line.dx > -line.dy)
+	// 					test_2(data, line);
+	// 				else
+	// 					ft_printf("4\n");
+	// 			}
+	// 		}
+	// 		else
+	// 		{
+	// 			while (line.x < line.x2)
+	// 			{
+	// 				img_pix_put(data, line.x, line.y, WHITE_PIXEL);
+	// 				line.x++;
+	// 			}
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		if (line.dy != 0)
+	// 		{
+	// 			if (line.dy > 0)
+	// 			{
+	// 				if (-line.dx > line.dy)
+	// 					test_4(data, line);
+	// 				else
+	// 					test_5(data, line);
+	// 			}
+	// 			else
+	// 			{
+	// 				if (line.dx <= line.dy)
+	// 					ft_printf("8\n");
+	// 				else
+	// 					ft_printf("9\n");
+	// 			}
+	// 		}
+	// 		else
+	// 		{
+	// 			ft_printf("10\n");
+	// 		}
+	// 	}
+	// }
+	// else
+	// {
+	// 	if (line.dy != 0)
+	// 	{
+	// 		if (line.dy > 0)
+	// 			test_3(data, line);
+	// 		else
+	// 			ft_printf("12\n");
+	// 	}
+	// }
 }
 
 t_pixel *get_next_pixel(t_data *data, t_pixel *origin, int axis)
