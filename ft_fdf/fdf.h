@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 19:26:45 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/19 21:07:48 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ void		free_lines(t_line *lines);
 
 // Hooks
 
-int			mouse_hook(int keysym, t_data *data);
+int 		mouse_hook(int keysym, t_data *data);
+
+int			handle_hooks(int keysym, t_data *data);
 
 #endif

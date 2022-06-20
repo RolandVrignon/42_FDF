@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 19:26:22 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:41:17 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	mlx_main(t_line *lines)
 	data = set_data(lines);
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.win_width, data.win_height, "FDF");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
@@ -63,23 +63,13 @@ int	mlx_main(t_line *lines)
 			&data.img.line_len, &data.img.endian);
 			
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
-	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-	mlx_mouse_hook(data.win_ptr, &mouse_hook, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_hooks, &data);
+	// mlx_mouse_hook(data.win_ptr, mouse_hook, &data);
 	mlx_loop(data.mlx_ptr);
 	
 	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
-	return (0);
-}
-
-int	handle_keypress(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		data->win_ptr = NULL;
-	}
 	return (0);
 }
 
