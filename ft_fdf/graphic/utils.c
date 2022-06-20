@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 12:41:17 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:51:34 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_data	set_data(t_line *lines)
 	data.zoom = 8;
 	data.map_height = line_lstsize(lines);
 	data.map_width = col_lstsize(lines->column);
+	data.x_off = data.win_height / 2;
+	data.y_off = data.win_width / 2 - data.map_width * data.zoom * 1.1;
 	return (data);
 }
 

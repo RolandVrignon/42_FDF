@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:07:32 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 12:39:47 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:55:50 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,20 @@ int handle_hooks(int keysym, t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
 	}
-	if (keysym == 113)
+	else if (keysym == 113)
 		data->zoom++;
-	if (keysym == 119)
+	else if (keysym == 119)
 		data->zoom--;
-	// ft_printf("Keypress: %d\n", keysym);
+	else if (keysym == 65361)
+		data->y_off-=2;
+	else if (keysym == 65363)
+		data->y_off+=2;
+	else if (keysym == 65364)
+		data->x_off+=2;
+	else if (keysym == 65362)
+		data->x_off-=2;
+	else
+		ft_printf("Keypress: %d\n", keysym);
 	return (0);
 }
 

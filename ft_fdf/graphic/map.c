@@ -15,15 +15,11 @@
 t_coord	pos(t_data *data, t_pixel *pixel)
 {
 	t_coord		test;
-	double			x_off;
 	double			u;
-	double			y_off;
 	double			v;
 
-	x_off = data->win_height / 2;
-	u = (pixel->u * data->zoom) + x_off;
-	y_off = data->win_width / 2 - data->map_width * data->zoom * 1.1;
-	v = (pixel->v * data->zoom) + y_off;
+	u = (pixel->u * data->zoom) + data->x_off;
+	v = (pixel->v * data->zoom) + data->y_off;
 	test.x = u;
 	test.y = v;
 	return (test);

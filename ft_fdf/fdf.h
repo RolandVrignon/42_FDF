@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 21:07:48 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:51:14 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ typedef struct s_data
 	int		map_height;
 	int		background;
 	int		zoom;
+	int		x_off;
+	int		y_off;
 	t_img	img;
 	t_line	*lines;
 }	t_data;
