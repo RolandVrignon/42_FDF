@@ -15,8 +15,8 @@
 t_coord	pos(t_data *data, t_pixel *pixel)
 {
 	t_coord		test;
-	double			u;
-	double			v;
+	double		u;
+	double		v;
 
 	u = (pixel->u * data->zoom) + data->x_off;
 	v = (pixel->v * data->zoom) + data->y_off;
@@ -38,7 +38,6 @@ int	render_map(t_data *data)
 		while (column)
 		{
 			pixel = column->pixel;
-			// img_pix_put(data, pos(data, pixel).x, pos(data, pixel).y, pixel->color);
 			draw_lines(data, pixel);
 			column = column->next;
 		}

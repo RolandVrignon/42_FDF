@@ -6,15 +6,15 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:26:39 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 16:35:28 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:14:46 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void bresenham(t_data *data, t_bresenham line)
+void	bresenham(t_data *data, t_bresenham line)
 {
-	int x0 = line.x1;
+	int	x0 = line.x1;
 	int y0 = line.y1;
 	int x1 = line.x2;
 	int y1 = line.y2;
@@ -34,7 +34,7 @@ void bresenham(t_data *data, t_bresenham line)
 		else
 			img_pix_put(data, x0, y0, 0xFFFFFF);
 		if (x0 == x1 && y0 == y1)
-			break;
+			break ;
 		e2 = 2 * err;
 		if (e2 >= dy)
 		{
@@ -45,7 +45,7 @@ void bresenham(t_data *data, t_bresenham line)
 		{
 			err += dx;
 			y0 += sy;
-		} 
+		}
 	}
 }
 
@@ -79,7 +79,7 @@ t_pixel *get_next_pixel(t_data *data, t_pixel *origin, int axis)
 
 t_bresenham set_brehensam(t_data *data, t_pixel *origin, t_pixel *dest)
 {
-	t_bresenham line;
+	t_bresenham	line;
 
 	line.x1 = pos(data, origin).x;
 	line.x2 = pos(data, dest).x;
@@ -95,7 +95,7 @@ t_bresenham set_brehensam(t_data *data, t_pixel *origin, t_pixel *dest)
 	return (line);
 }
 
-t_pixel *draw_line(t_data *data, t_pixel *origin)
+t_pixel	*draw_line(t_data *data, t_pixel *origin)
 {
 	t_pixel *dest;
 	t_bresenham line;
@@ -108,7 +108,7 @@ t_pixel *draw_line(t_data *data, t_pixel *origin)
 	return (dest);
 }
 
-void draw_col(t_data *data, t_pixel *origin)
+void	draw_col(t_data *data, t_pixel *origin)
 {
 	t_pixel *dest;
 	t_bresenham line;
@@ -118,7 +118,7 @@ void draw_col(t_data *data, t_pixel *origin)
 	bresenham(data, line);
 }
 
-void draw_lines(t_data *data, t_pixel *pixel)
+void	draw_lines(t_data *data, t_pixel *pixel)
 {
 	pixel = draw_line(data, pixel);
 	if (!pixel)

@@ -6,19 +6,17 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:09:43 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:12:16 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-
-
 t_pixel	*create_pixel(double i, double j, char *str)
 {
 	t_pixel	*pixel;
-	double 	tmp;
-	double 	deg;
+	double	tmp;
+	double	deg;
 	char	**test;
 
 	pixel = (t_pixel *)malloc(sizeof(t_pixel));
@@ -28,14 +26,14 @@ t_pixel	*create_pixel(double i, double j, char *str)
 	pixel->x = i;
 	pixel->y = j;
 	pixel->z = ft_atoi(test[0]);
-	pixel->u = (pixel->x - 1.4 * pixel->z ) / sqrt(2);
+	pixel->u = (pixel->x - 1.4 * pixel->z) / sqrt(2);
 	pixel->v = (pixel->x + 2 * pixel->y + 1.4 * pixel->z) / sqrt(6);
 	if (test[1])
 		pixel->color = atoi_base(test[1]);
 	else
 		pixel->color = 0xFFFFFF;
 	tmp = pixel->u;
-	deg = - 50 * M_PI_4 / 35;
+	deg = -50 * M_PI_4 / 35;
 	pixel->u = pixel->u + (pixel->u * cos(deg) + pixel->v * sin(deg));
 	pixel->v = pixel->v + (-tmp * sin(deg) + pixel->v * cos(deg));
 	return (pixel);

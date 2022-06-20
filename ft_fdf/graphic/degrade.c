@@ -6,13 +6,13 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:44:10 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:09:27 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:13:09 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-static int			fdf_color_degrade_r(int clr_a, int clr_b, int index)
+static int	fdf_color_degrade_r(int clr_a, int clr_b, int index)
 {
 	int				r_a;
 	int				r_b;
@@ -25,7 +25,7 @@ static int			fdf_color_degrade_r(int clr_a, int clr_b, int index)
 	return (mask);
 }
 
-static int			fdf_color_degrade_g(int clr_a, int clr_b, int index)
+static int	fdf_color_degrade_g(int clr_a, int clr_b, int index)
 {
 	int				g_a;
 	int				g_b;
@@ -38,7 +38,7 @@ static int			fdf_color_degrade_g(int clr_a, int clr_b, int index)
 	return (mask);
 }
 
-static int			fdf_color_degrade_b(int clr_a, int clr_b, int index)
+static int	fdf_color_degrade_b(int clr_a, int clr_b, int index)
 {
 	int				b_a;
 	int				b_b;
@@ -50,7 +50,7 @@ static int			fdf_color_degrade_b(int clr_a, int clr_b, int index)
 	return (b_a + ((b_b - b_a) * index / 100));
 }
 
-int	 color_degrade(int clr_a, int clr_b, int index)
+int	color_degrade(int clr_a, int clr_b, int index)
 {
 	int				r;
 	int				g;
@@ -81,7 +81,8 @@ int	atoi_base(char *str)
 		positif = positif * -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'F') || str[i] == 'x')
+	while ((str[i] >= '0' && str[i] <= '9')
+		|| (str[i] >= 'A' && str[i] <= 'F') || str[i] == 'x')
 	{
 		nb = nb * 16 + (str[i] - '0');
 		i++;

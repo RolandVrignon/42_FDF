@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:00:24 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:18:24 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,15 @@ t_data	set_data(t_line *lines)
 	data.zoom = 1;
 	data.map_height = line_lstsize(lines);
 	data.map_width = col_lstsize(lines->column);
-	data.win_width = 2560 / 2;
-	data.win_height = 1440 / 2;
-	data.x_off = data.win_height / 2;
-	data.y_off = data.win_width / 2 - data.map_width * data.zoom * 1.1;
+	data.ww = 2560 / 2;
+	data.wh = 1440 / 2;
+	data.x_off = data.wh / 2;
+	data.y_off = data.ww / 2 - data.map_width * data.zoom * 1.1;
 	return (data);
 }
 
 int	handle_no_event(void *data)
 {
-	/* This function needs to exist, but it is useless for the moment */
 	(void)data;
 	return (0);
 }
@@ -54,21 +53,18 @@ int	mlx_main(t_line *lines)
 	data = set_data(lines);
 	if (data.mlx_ptr == NULL)
 		return (0);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.win_width, data.win_height, "FDF");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.ww, data.wh, "FDF");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
 		return (0);
 	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, data.win_width, data.win_height);
+	data.img.mlx_img = mlx_new_image(data.mlx_ptr, data.ww, data.wh);
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
-			
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_hooks, &data);
-	// mlx_mouse_hook(data.win_ptr, mouse_hook, &data);
 	mlx_loop(data.mlx_ptr);
-	
 	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
@@ -81,7 +77,7 @@ void	img_pix_put(t_data *data, int x, int y, int color)
 	t_img	*img;
 
 	img = &data->img;
-	if (x < 0 || x > data->win_height || y < 0 || y > data->win_width)
+	if (x < 0 || x > data->wh || y < 0 || y > data->ww)
 		return ;
 	pixel = img->addr + (x * img->line_len + y * (img->bpp / 8));
 	*(int *)pixel = color;

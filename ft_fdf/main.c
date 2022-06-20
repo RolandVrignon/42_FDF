@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 16:51:13 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:11:05 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	lines = create_coordonates(av[1]);
-	// print_lines(lines);
 	mlx_main(lines);
 	free_lines(lines);
 	return (0);

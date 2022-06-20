@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 16:59:47 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:17:20 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@
 
 typedef struct s_bresenham
 {
-	int x;
-	int y;
-	int p;
-	int x1;
-	int y1;
-	int x2;
-	int y2;
+	int	x;
+	int	y;
+	int	p;
+	int	x1;
+	int	y1;
+	int	x2;
+	int	y2;
 	int	color1;
 	int	color2;
-	int d;
-	int dx;
-	int dy;
+	int	d;
+	int	dx;
+	int	dy;
 }	t_bresenham;
 typedef struct s_coord
 {
@@ -80,8 +80,8 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		cur_img;
-	int		win_width;
-	int		win_height;
+	int		ww;
+	int		wh;
 	int		map_width;
 	int		map_height;
 	int		background;
@@ -144,7 +144,7 @@ void		free_lines(t_line *lines);
 
 // Hooks
 
-int 		mouse_hook(int keysym, t_data *data);
+int			mouse_hook(int keysym, t_data *data);
 
 int			handle_hooks(int keysym, t_data *data);
 
