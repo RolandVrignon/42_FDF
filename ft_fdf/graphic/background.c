@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:26:30 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 13:07:26 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:42:01 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	render_background(t_data *data)
 	int	j;
 
 	i = 0;
-	while (i < data->win_height)
+	while (i < data->wh)
 	{
 		j = 0;
-		while (j < data->win_width)
+		while (j < data->ww)
 		{
 			img_pix_put(data, i, j++, data->background);
 		}

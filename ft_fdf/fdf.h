@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:17:20 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:12:40 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 typedef struct s_bresenham
 {
-	int	x;
-	int	y;
+	int	sx;
+	int	sy;
 	int	p;
 	int	x1;
 	int	y1;
@@ -108,11 +108,21 @@ int			render_map(t_data *data);
 
 void		img_pix_put(t_data *data, int x, int y, int color);
 
+t_bresenham	set_brehensam(t_data *data, t_pixel *origin, t_pixel *dest);
+
+t_pixel		*get_next_pixel(t_data *data, t_pixel *origin, int axis);
+
 void		draw_lines(t_data *data, t_pixel *pixel);
+
+t_pixel		*draw_line(t_data *data, t_pixel *origin);
+
+void		draw_col(t_data *data, t_pixel *origin);
+
+void		bresenham(t_data *data, t_bresenham line);
 
 t_coord		pos(t_data *data, t_pixel *pixel);
 
-int			color_degrade(int clr_a, int clr_b, int index);
+int			c(int clr_a, int clr_b, int index);
 
 int			atoi_base(char *str);
 
@@ -144,7 +154,7 @@ void		free_lines(t_line *lines);
 
 // Hooks
 
-int			mouse_hook(int keysym, t_data *data);
+int			mouse_hook(int keysym, int x, int y, t_data *data);
 
 int			handle_hooks(int keysym, t_data *data);
 

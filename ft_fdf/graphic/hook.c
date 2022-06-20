@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:07:32 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:14:16 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:44:00 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	handle_hooks(int keysym, t_data *data)
 	return (0);
 }
 
-int	mouse_hook(int keysym, t_data *data)
+int	mouse_hook(int keysym, int x, int y, t_data *data)
 {
+	(void)x;
+	(void)y;
 	if (keysym == 4)
 		data->zoom++;
 	else if (keysym == 5)

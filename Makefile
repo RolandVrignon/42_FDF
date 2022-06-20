@@ -6,7 +6,7 @@
 #    By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 00:55:30 by rvrignon          #+#    #+#              #
-#    Updated: 2022/06/20 13:45:46 by rvrignon         ###   ########.fr        #
+#    Updated: 2022/06/20 18:11:20 by rvrignon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC =  	ft_fdf/main.c \
 		ft_fdf/graphic/background.c \
 		ft_fdf/graphic/map.c \
 		ft_fdf/graphic/lines.c \
+		ft_fdf/graphic/lines_two.c \
 		ft_fdf/graphic/utils.c \
 		ft_fdf/graphic/hook.c \
 		ft_fdf/graphic/degrade.c \

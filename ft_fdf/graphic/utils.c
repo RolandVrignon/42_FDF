@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:18:24 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:42:54 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	mlx_main(t_line *lines)
 			&data.img.line_len, &data.img.endian);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_hooks, &data);
+	mlx_mouse_hook(data.win_ptr, mouse_hook, &data);
 	mlx_loop(data.mlx_ptr);
 	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
 	mlx_destroy_display(data.mlx_ptr);

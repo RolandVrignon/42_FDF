@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:44:10 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:13:09 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:07:43 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	fdf_color_degrade_b(int clr_a, int clr_b, int index)
 	return (b_a + ((b_b - b_a) * index / 100));
 }
 
-int	color_degrade(int clr_a, int clr_b, int index)
+int	c(int clr_a, int clr_b, int index)
 {
 	int				r;
 	int				g;
@@ -58,7 +58,12 @@ int	color_degrade(int clr_a, int clr_b, int index)
 	int				color;
 
 	if (index <= 0 || index >= 100)
-		return (index < 100 ? clr_a : clr_b);
+	{
+		if (index < 100)
+			return (clr_a);
+		else
+			return (clr_b);
+	}	
 	r = fdf_color_degrade_r(clr_a, clr_b, index);
 	g = fdf_color_degrade_g(clr_a, clr_b, index);
 	b = fdf_color_degrade_b(clr_a, clr_b, index);
