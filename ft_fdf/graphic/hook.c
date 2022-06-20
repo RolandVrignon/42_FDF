@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:07:32 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 12:55:50 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:00:32 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int handle_hooks(int keysym, t_data *data)
 	else if (keysym == 119)
 		data->zoom--;
 	else if (keysym == 65361)
-		data->y_off-=2;
+		data->y_off-=8;
 	else if (keysym == 65363)
-		data->y_off+=2;
+		data->y_off+=8;
 	else if (keysym == 65364)
-		data->x_off+=2;
+		data->x_off+=8;
 	else if (keysym == 65362)
-		data->x_off-=2;
+		data->x_off-=8;
 	else
 		ft_printf("Keypress: %d\n", keysym);
 	return (0);
