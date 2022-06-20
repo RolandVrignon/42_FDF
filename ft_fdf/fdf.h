@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 12:51:14 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:21:54 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 # include <math.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-
-# define WINDOW_WIDTH 2560 / 2
-# define WINDOW_HEIGHT 1440 / 2
-
-# define MLX_ERROR 1
 
 # define RED_PIXEL 0xff79c6
 # define GREEN_PIXEL 0x50fa7b
@@ -38,6 +33,8 @@ typedef struct s_bresenham
 	int y1;
 	int x2;
 	int y2;
+	int	color1;
+	int	color2;
 	int d;
 	int dx;
 	int dy;
@@ -114,6 +111,8 @@ void		img_pix_put(t_data *data, int x, int y, int color);
 void		draw_lines(t_data *data, t_pixel *pixel);
 
 t_coord		pos(t_data *data, t_pixel *pixel);
+
+int			color_degrade(int clr_a, int clr_b, int index);
 
 // PARSING FUNCTIONS
 

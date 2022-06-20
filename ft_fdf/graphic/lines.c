@@ -6,143 +6,11 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 01:26:39 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/19 18:26:41 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:35:28 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
-
-void test(t_data *data, t_bresenham line)
-{
-	int e;
-	int x;
-	int y;
-
-	e = line.dx;
-	x = line.x1;
-	y = line.y1;
-	line.dx = e * 2;
-	line.dy = line.dy * 2;
-
-	while (x++ != line.x2)
-	{
-		img_pix_put(data, x, y, WHITE_PIXEL);
-		e -= line.dy;
-		if (e < 0)
-		{
-			y++;
-			e = e + line.dx;
-		}
-	}
-}
-
-void test_2(t_data *data, t_bresenham line)
-{
-	int e;
-	int x;
-	int y;
-
-	e = line.dx;
-	x = line.x1;
-	y = line.y1;
-	line.dx = e * 2;
-	line.dy = line.dy * 2;
-
-	while (x++ != line.x2)
-	{
-		img_pix_put(data, x, y, WHITE_PIXEL);
-		e += line.dy;
-		if (e < 0)
-		{
-			y--;
-			e = e + line.dx;
-		}
-	}
-}
-
-void test_3(t_data *data, t_bresenham line)
-{
-	int y;
-
-	y = line.y1;
-	while (y < line.y2)
-	{
-		img_pix_put(data, line.x, y, WHITE_PIXEL);
-		y++;
-	}
-}
-
-void test_4(t_data *data, t_bresenham line)
-{
-	int e;
-	int x;
-	int y;
-
-	e = line.dx;
-	x = line.x1;
-	y = line.y1;
-	line.dx = e * 2;
-	line.dy = line.dy * 2;
-
-	while (x-- != line.x2)
-	{
-		img_pix_put(data, x, y, WHITE_PIXEL);
-		e += line.dy;
-		if (e > 0)
-		{
-			y++;
-			e = e + line.dx;
-		}
-	}
-}
-
-void test_5(t_data *data, t_bresenham line)
-{
-	int e;
-	int x;
-	int y;
-
-	e = line.dy;
-	x = line.x1;
-	y = line.y1;
-	line.dy = e * 2;
-	line.dx = line.dx * 2;
-
-	while (y++ != line.y2)
-	{
-		img_pix_put(data, x, y, WHITE_PIXEL);
-		e += line.dx;
-		if (e < 0)
-		{
-			x--;
-			e = e + line.dy;
-		}
-	}
-}
-
-void test_6(t_data *data, t_bresenham line)
-{
-	int e;
-	int x;
-	int y;
-
-	e = line.dy;
-	x = line.x1;
-	y = line.y1;
-	line.dy = e * 2;
-	line.dx = line.dx * 2;
-
-	while (y++ != line.y2)
-	{
-		img_pix_put(data, x, y, WHITE_PIXEL);
-		e -= line.dx;
-		if (e < 0)
-		{
-			x++;
-			e = e + line.dy;
-		}
-	}
-}
 
 void bresenham(t_data *data, t_bresenham line)
 {
@@ -152,11 +20,19 @@ void bresenham(t_data *data, t_bresenham line)
 	int y1 = line.y2;
 	int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
 	int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
-	int err = dx + dy, e2; /* error value e_xy */
+	int err = dx + dy, e2;
+	int i;
 
-	for (;;)
-	{ /* loop */
-		img_pix_put(data, x0, y0, WHITE_PIXEL);
+	i = 200;
+	while (1)
+	{
+		i--;
+		if (line.color1 != 0xFFFFFF)
+			img_pix_put(data, x0, y0, color_degrade(line.color2, line.color1, i));
+		else if (line.color2 != 0xFFFFFF)
+			img_pix_put(data, x0, y0, color_degrade(line.color2, line.color1, i));
+		else
+			img_pix_put(data, x0, y0, 0xFFFFFF);
 		if (x0 == x1 && y0 == y1)
 			break;
 		e2 = 2 * err;
@@ -164,81 +40,13 @@ void bresenham(t_data *data, t_bresenham line)
 		{
 			err += dy;
 			x0 += sx;
-		} /* e_xy+e_x > 0 */
+		}
 		if (e2 <= dx)
 		{
 			err += dx;
 			y0 += sy;
-		} /* e_xy+e_y < 0 */
+		} 
 	}
-	// (void)line;
-	// (void)data;
-
-	// if (line.dx != 0)
-	// {
-	// 	if (line.dx > 0)
-	// 	{
-	// 		if (line.dy != 0)
-	// 		{
-	// 			if (line.dy > 0)
-	// 			{
-	// 				if (line.dx > line.dy)
-	// 					test(data, line);
-	// 				else
-	// 					test_6(data, line);
-	// 			}
-	// 			else
-	// 			{
-	// 				if (line.dx > -line.dy)
-	// 					test_2(data, line);
-	// 				else
-	// 					ft_printf("4\n");
-	// 			}
-	// 		}
-	// 		else
-	// 		{
-	// 			while (line.x < line.x2)
-	// 			{
-	// 				img_pix_put(data, line.x, line.y, WHITE_PIXEL);
-	// 				line.x++;
-	// 			}
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		if (line.dy != 0)
-	// 		{
-	// 			if (line.dy > 0)
-	// 			{
-	// 				if (-line.dx > line.dy)
-	// 					test_4(data, line);
-	// 				else
-	// 					test_5(data, line);
-	// 			}
-	// 			else
-	// 			{
-	// 				if (line.dx <= line.dy)
-	// 					ft_printf("8\n");
-	// 				else
-	// 					ft_printf("9\n");
-	// 			}
-	// 		}
-	// 		else
-	// 		{
-	// 			ft_printf("10\n");
-	// 		}
-	// 	}
-	// }
-	// else
-	// {
-	// 	if (line.dy != 0)
-	// 	{
-	// 		if (line.dy > 0)
-	// 			test_3(data, line);
-	// 		else
-	// 			ft_printf("12\n");
-	// 	}
-	// }
 }
 
 t_pixel *get_next_pixel(t_data *data, t_pixel *origin, int axis)
@@ -277,6 +85,8 @@ t_bresenham set_brehensam(t_data *data, t_pixel *origin, t_pixel *dest)
 	line.x2 = pos(data, dest).x;
 	line.y1 = pos(data, origin).y;
 	line.y2 = pos(data, dest).y;
+	line.color1 = origin->color;
+	line.color2 = dest->color;
 	line.dx = line.x2 - line.x1;
 	line.dy = line.y2 - line.y1;
 	line.x = line.x1;
