@@ -6,7 +6,7 @@
 #    By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 00:55:30 by rvrignon          #+#    #+#              #
-#    Updated: 2022/06/20 18:11:20 by rvrignon         ###   ########.fr        #
+#    Updated: 2022/06/20 18:16:41 by rvrignon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ		=	$(SRC:.c=.o)
 
 CC		=	gcc
 RM		=	rm -f
-CFLAGS	=	-Wall -Werror -Wextra -g -I/usr/include -Imlx_Linux -O3 -c $< -o $@
+CFLAGS	=	-Wall -Werror -Wextra -g -lm -I/usr/include -Imlx_Linux -O3 -c $< -o $@
 
 NAME	=	ft_fdf/fdf.a
 
