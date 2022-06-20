@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 16:41:31 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:09:43 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_pixel	*create_pixel(double i, double j, char *str)
 	pixel->u = (pixel->x - 1.4 * pixel->z ) / sqrt(2);
 	pixel->v = (pixel->x + 2 * pixel->y + 1.4 * pixel->z) / sqrt(6);
 	if (test[1])
-		pixel->color = 0x810202;
+		pixel->color = atoi_base(test[1]);
 	else
 		pixel->color = 0xFFFFFF;
 	tmp = pixel->u;

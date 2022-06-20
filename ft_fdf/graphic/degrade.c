@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:44:10 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 13:45:28 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:09:27 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,27 @@ int	 color_degrade(int clr_a, int clr_b, int index)
 	b = fdf_color_degrade_b(clr_a, clr_b, index);
 	color = (r | g) | b;
 	return (color);
+}
+
+int	atoi_base(char *str)
+{
+	long int	i;
+	double		positif;
+	long double	nb;
+
+	i = 0;
+	nb = 0;
+	positif = 1;
+	while (str[i] <= ' ')
+		i++;
+	if (str[i] == '-')
+		positif = positif * -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'F') || str[i] == 'x')
+	{
+		nb = nb * 16 + (str[i] - '0');
+		i++;
+	}
+	return (nb * positif);
 }

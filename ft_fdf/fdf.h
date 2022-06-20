@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 16:21:54 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:59:47 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ void		draw_lines(t_data *data, t_pixel *pixel);
 t_coord		pos(t_data *data, t_pixel *pixel);
 
 int			color_degrade(int clr_a, int clr_b, int index);
+
+int			atoi_base(char *str);
 
 // PARSING FUNCTIONS
 
