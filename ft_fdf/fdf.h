@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 18:12:40 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:43:42 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ int			line_lstsize(t_line *lst);
 int			free_stuff(char **tab, char *str);
 
 void		free_lines(t_line *lines);
+
+void		free_column(t_column *column);
 
 // Hooks
 

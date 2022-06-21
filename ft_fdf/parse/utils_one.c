@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 19:55:53 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:07:56 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:44:33 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ t_column	*column_lstnew(t_pixel *pixel)
 
 	new = (t_column *)malloc(sizeof(t_column));
 	if (!new || !pixel)
+	{
+		free(new);
 		return (NULL);
+	}
 	new->pixel = pixel;
 	new->next = NULL;
 	return (new);

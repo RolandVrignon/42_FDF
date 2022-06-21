@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:09:58 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/16 01:08:36 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:45:06 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	free_stuff(char **tab, char *str)
 	while (tab[i])
 		free(tab[i++]);
 	free(tab);
-	free(str);
+	if (str)
+		free(str);
 	return (1);
 }
 
@@ -48,7 +49,7 @@ void	free_lines(t_line *lines)
 
 	if (!lines)
 		return ;
-	while (lines->next != NULL)
+	while (lines)
 	{
 		free_column(lines->column);
 		tmp = lines;

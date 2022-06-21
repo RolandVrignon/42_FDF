@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:10:52 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:12:16 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:43:55 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_pixel	*create_pixel(double i, double j, char *str)
 	deg = -50 * M_PI_4 / 35;
 	pixel->u = pixel->u + (pixel->u * cos(deg) + pixel->v * sin(deg));
 	pixel->v = pixel->v + (-tmp * sin(deg) + pixel->v * cos(deg));
+	free_stuff(test, NULL);
 	return (pixel);
 }
 
@@ -49,7 +50,10 @@ t_line	*assign_coordonates(char **tab, double i, t_line *lines)
 	k = 0;
 	column = column_lstnew(create_pixel(i, k, tab[j]));
 	if (!column)
+	{
+		free_column(column);
 		return (NULL);
+	}
 	while (tab[++j] != NULL)
 		column_lstadd_back(column, create_pixel(i, ++k, tab[j]));
 	if (!lines)
