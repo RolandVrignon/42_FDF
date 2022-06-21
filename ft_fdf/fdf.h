@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/21 13:49:12 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:58:53 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,7 @@ void		free_column(t_column *column);
 int			mouse_hook(int keysym, int x, int y, t_data *data);
 
 int			handle_hooks(int keysym, t_data *data);
+
+int			destroy_window(t_data *data);
 
 #endif
