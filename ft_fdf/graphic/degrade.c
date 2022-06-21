@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:44:10 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/21 14:17:18 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:18:13 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ int	atoi_base(char *str)
 		nb = nb * 16 + (str[i] - '0');
 		i++;
 	}
-	printf("%Lf\n", nb * positif);
 	return (nb * positif);
 }
