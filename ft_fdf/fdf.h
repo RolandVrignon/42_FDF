@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/21 13:43:42 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:49:12 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 # include <math.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-
-# define RED_PIXEL 0xff79c6
-# define GREEN_PIXEL 0x50fa7b
-# define NAVY_PIXEL 0x000000
-# define WHITE_PIXEL 0xFFFFFF
 
 typedef struct s_bresenham
 {

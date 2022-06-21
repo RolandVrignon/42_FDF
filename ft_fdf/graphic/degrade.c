@@ -6,11 +6,12 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:44:10 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 18:07:43 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:17:18 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+#include <stdio.h>
 
 static int	fdf_color_degrade_r(int clr_a, int clr_b, int index)
 {
@@ -84,13 +85,15 @@ int	atoi_base(char *str)
 		i++;
 	if (str[i] == '-')
 		positif = positif * -1;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == ' ')
 		i++;
 	while ((str[i] >= '0' && str[i] <= '9')
-		|| (str[i] >= 'A' && str[i] <= 'F') || str[i] == 'x')
+		|| (str[i] >= 'A' && str[i] <= 'F') || (str[i] >= 'a' && str[i] <= 'f')
+		|| str[i] == 'x')
 	{
 		nb = nb * 16 + (str[i] - '0');
 		i++;
 	}
+	printf("%Lf\n", nb * positif);
 	return (nb * positif);
 }

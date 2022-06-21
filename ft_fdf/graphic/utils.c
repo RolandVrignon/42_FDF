@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:27:33 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/20 17:42:54 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:50:21 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data	set_data(t_line *lines)
 
 	data.mlx_ptr = mlx_init();
 	data.lines = lines;
-	data.background = NAVY_PIXEL;
+	data.background = 0x000000;
 	data.zoom = 1;
 	data.map_height = line_lstsize(lines);
 	data.map_width = col_lstsize(lines->column);
