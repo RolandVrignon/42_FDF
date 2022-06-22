@@ -15,11 +15,19 @@
 t_coord	pos(t_data *data, t_pixel *pixel)
 {
 	t_coord		test;
+	double		deg;
+	double		tmp;
 	double		u;
 	double		v;
 
-	u = (pixel->u * data->zoom) + data->x_off;
-	v = (pixel->v * data->zoom) + data->y_off;
+	tmp = pixel->u;
+	deg = data->deg * M_PI_4 / 50;
+	pixel->u = ((pixel->x * data->rx) - 1.4 * pixel->z) / sqrt(2);
+	pixel->v = ((pixel->x * data->rx) + 2 * (pixel->y * data->ry) + 1.4 * pixel->z) / sqrt(6);
+	u = pixel->u + (pixel->u * cos(deg) + pixel->v * sin(deg));
+	v = pixel->v + (-tmp * sin(deg) + pixel->v * cos(deg));
+	u = (u * data->zoom) + data->x_off;
+	v = (v* data->zoom) + data->y_off;
 	test.x = u;
 	test.y = v;
 	return (test);

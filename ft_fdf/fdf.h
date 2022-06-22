@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:52:09 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/21 14:58:53 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/06/22 16:02:10 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ typedef struct s_data
 	int		zoom;
 	int		x_off;
 	int		y_off;
+	double	rx;
+	double	ry;
+	double	deg;
 	t_img	img;
 	t_line	*lines;
 }	t_data;
