@@ -6,11 +6,28 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:07:32 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/22 16:05:51 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:59:29 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+int	handle_hooks_two(int keysym, t_data *data)
+{
+	if (keysym == 115)
+		data->rx -= 0.1;
+	else if (keysym == 97)
+		data->ry -= 0.1;
+	else if (keysym == 100)
+		data->ry += 0.1;
+	else if (keysym == 112)
+		data->deg += 1;
+	else if (keysym == 65451)
+		data->rz += 0.1;
+	else if (keysym == 65453)
+		data->rz -= 0.1;
+	return (0);
+}
 
 int	handle_hooks(int keysym, t_data *data)
 {
@@ -29,17 +46,7 @@ int	handle_hooks(int keysym, t_data *data)
 		data->x_off -= 8;
 	else if (keysym == 119)
 		data->rx += 0.1;
-	else if (keysym == 115)
-		data->rx -= 0.1;
-	else if (keysym == 97)
-		data->ry -= 0.1;
-	else if (keysym == 100)
-		data->ry += 0.1;
-	else if (keysym == 112)
-		data->deg += 1;
-	else
-		ft_printf("key : %d\n", keysym);
-	return (0);
+	return (handle_hooks_two(keysym, data));
 }
 
 int	destroy_window(t_data *data)

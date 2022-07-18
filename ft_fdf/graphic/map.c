@@ -12,7 +12,7 @@
 
 #include "../fdf.h"
 
-t_coord	pos(t_data *data, t_pixel *pixel)
+t_coord	pos(t_data *d, t_pixel *p)
 {
 	t_coord		test;
 	double		deg;
@@ -20,14 +20,14 @@ t_coord	pos(t_data *data, t_pixel *pixel)
 	double		u;
 	double		v;
 
-	tmp = pixel->u;
-	deg = data->deg * M_PI_4 / 50;
-	pixel->u = ((pixel->x * data->rx) - 1.4 * pixel->z) / sqrt(2);
-	pixel->v = ((pixel->x * data->rx) + 2 * (pixel->y * data->ry) + 1.4 * pixel->z) / sqrt(6);
-	u = pixel->u + (pixel->u * cos(deg) + pixel->v * sin(deg));
-	v = pixel->v + (-tmp * sin(deg) + pixel->v * cos(deg));
-	u = (u * data->zoom) + data->x_off;
-	v = (v* data->zoom) + data->y_off;
+	tmp = p->u;
+	deg = d->deg * M_PI_4 / 50;
+	p->u = ((p->x * d->rx) - d->rz * p->z) / sqrt(2);
+	p->v = ((p->x * d->rx) + 2 * (p->y * d->ry) + d->rz * p->z) / sqrt(6);
+	u = p->u + (p->u * cos(deg) + p->v * sin(deg));
+	v = p->v + (-tmp * sin(deg) + p->v * cos(deg));
+	u = (u * d->zoom) + d->x_off;
+	v = (v * d->zoom) + d->y_off;
 	test.x = u;
 	test.y = v;
 	return (test);
