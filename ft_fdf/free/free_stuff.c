@@ -6,11 +6,24 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:09:58 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/06/21 13:45:06 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/08/01 16:04:52 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+void	free_double(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 int	free_stuff(char **tab, char *str)
 {
