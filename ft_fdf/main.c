@@ -6,7 +6,7 @@
 /*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:53:05 by rvrignon          #+#    #+#             */
-/*   Updated: 2022/08/01 16:16:14 by rvrignon         ###   ########.fr       */
+/*   Updated: 2022/08/01 16:19:19 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ static int	double_len(char **tab)
 	return (i);
 }
 
+static void	free_gnl(int fd)
+{
+	char	*str;
+
+	str = get_next_line(fd);
+	while (str)
+	{
+		free(str);
+		str = get_next_line(fd);
+	}
+}
+
 static int	check_lines(char *str, char **line, int len, int fd)
 {
 	int	new_len;
@@ -54,6 +66,7 @@ static int	check_lines(char *str, char **line, int len, int fd)
 		free(str);
 		if (new_len != len)
 		{	
+			free_gnl(fd);
 			close(fd);
 			return (0);
 		}
